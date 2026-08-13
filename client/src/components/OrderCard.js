@@ -1,107 +1,61 @@
-import * as React from "react";
-import Card from "@mui/material/Card";
-import CardMedia from "@mui/material/CardMedia";
-import CardContent from "@mui/material/CardContent";
-import Typography from "@mui/material/Typography";
-import Grid from "@mui/material/Grid";
-// import toast from "react-hot-toast";
-export default function OrderCard({
-  name,
- seat,
-  username,
-  img,
-  total,
-  time,
-  id,
-  isUser,
-}) {
+import React from "react";
+
+const parseSeats = (value) => {
+  if (Array.isArray(value)) return value;
+  if (!value) return [];
+  try {
+    const parsed = JSON.parse(value);
+    return Array.isArray(parsed) ? parsed : [String(parsed)];
+  } catch {
+    return String(value).replaceAll("[", "").replaceAll("]", "").replaceAll('"', "").split(",").map((s) => s.trim()).filter(Boolean);
+  }
+};
+
+const formatDate = (value) => {
+  const date = new Date(value);
+  if (!value || Number.isNaN(date.getTime())) return "-";
+  return date.toLocaleDateString("en-IN", { day: "2-digit", month: "short", year: "numeric" });
+};
+
+const formatTime = (value) => {
+  const date = new Date(value);
+  if (!value || Number.isNaN(date.getTime())) return "";
+  return date.toLocaleTimeString("en-IN", { hour: "2-digit", minute: "2-digit" });
+};
+
+export default function OrderCard({ name, seat, username, img, total, time, id }) {
+  const seats = parseSeats(seat);
+  const bookingId = id ? String(id).slice(-8).toUpperCase() : "DINOMOVIE";
 
   return (
-    <>
-    {/* <Card
-      sx={{
-        width: "40%",
-        margin: "auto",
-        mt: 2,
-        padding: 2,
-        boxShadow: "5px 5px 10px #ccc",
-        ":hover:": {
-          boxShadow: "10px 10px 20px #ccc",
-        },
-      }}
-    >
-    
-      <CardHeader
-        avatar={
-          <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-            {username}
-          </Avatar>
-        }
-        title={username}
-        subheader={time}
-      />
-      {/* <CardMedia component="img" height="194" image={image} alt="Paella dish" /> */}
-      
-    <Card style={{backgroundImage: 'linear-gradient(to left bottom, #3d10f2, #bf00bf, #f10087, #ff0053, #fe0c24)'}}
-    sx={{
-
-      width: "59%",
-      margin: "auto",
-      mt: 2,
-      padding: 2,
-      boxShadow: "5px 5px 10px #ccc",
-      ":hover:": {
-        boxShadow: "10px 10px 20px #ccc",
-      },
-    }}
-  >
-<Grid container spacing={2}>
-<Grid item xs={12} md={2}>
-  <CardMedia component="img" height="100%" image={img} alt="Paella dish" />
-
-</Grid>
-<Grid item xs={12} md={8}>
-
-
-
-
-<CardContent>
-
-<Grid container spacing={2}>
-<Grid item xs={12}>
-
-<Typography variant="h5" color="white">
-Name : {name}
-</Typography>
-</Grid>
-<Grid item xs={12}>
-<Typography variant="h6" color="white">
-Time : {time}
-</Typography>
-</Grid>
-<Grid item xs={12}>
-<Typography variant="h6" color="white">
-Seat : {seat}
-</Typography>
-</Grid>
-
-
-  <Grid item xs={12}>
-    <Typography variant="h6" color="white">
-      Total : Rs. {total}
-    </Typography>
-  </Grid>
-
-
-</Grid>
-
-
-</CardContent>
-</Grid>
-
-</Grid>
-    
-  </Card>
-  </>
+    <article className="dino-order-ticket">
+      <div className="ticket-poster-wrapper">
+        <img src={img} alt={name} className="ticket-movie-poster" />
+        <div className="ticket-status-badge">CONFIRMED</div>
+      </div>
+      <div className="ticket-main-content">
+        <div className="ticket-brand-row">
+          <div><span className="ticket-brand">DINO MOVIES</span><span className="ticket-type">DIGITAL TICKET</span></div>
+          <div className="ticket-booking-number"><small>BOOKING ID</small><strong>#{bookingId}</strong></div>
+        </div>
+        <div className="ticket-movie-info">
+          <span className="ticket-small-label">MOVIE</span>
+          <h2>{name}</h2>
+          <p>Booked by {username || "User"}</p>
+        </div>
+        <div className="ticket-divider" />
+        <div className="ticket-details-grid">
+          <div className="ticket-detail"><span className="ticket-small-label">BOOKED ON</span><strong>{formatDate(time)}</strong><small>{formatTime(time)}</small></div>
+          <div className="ticket-detail"><span className="ticket-small-label">TICKETS</span><strong>{seats.length}</strong><small>{seats.length === 1 ? "1 Seat" : `${seats.length} Seats`}</small></div>
+          <div className="ticket-detail"><span className="ticket-small-label">TOTAL</span><strong className="ticket-amount">₹{Number(total) || 0}</strong><small>Confirmed</small></div>
+        </div>
+        <div className="ticket-seat-section">
+          <span className="ticket-small-label">YOUR SEATS</span>
+          <div className="ticket-seat-list">
+            {seats.map((seatNumber) => <span className="ticket-seat-number" key={seatNumber}>{seatNumber}</span>)}
+          </div>
+        </div>
+      </div>
+    </article>
   );
 }

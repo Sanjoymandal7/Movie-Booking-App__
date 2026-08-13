@@ -5,63 +5,64 @@ import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { add } from "../redux/orderSlice";
 
+const sections = [
+  { name: "SILVER", price: 150, rows: ["A", "B", "C"] },
+  { name: "PREMIUM", price: 200, rows: ["D", "E"] },
+  { name: "RECLINER", price: 300, rows: ["F", "G"] },
+];
+
+const getSeats = (row) =>
+  Array.from({ length: 20 }, (_, index) => row[`seat${index + 1}`]);
+
+const getSeatPrice = (seat) => {
+  const row = seatData.find((item) => getSeats(item).includes(seat));
+  return row ? Number(row.price) : 0;
+};
+
 const BookTicket = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
   const { bookItem } = useSelector((state) => state.book);
 
-  let isLogin = useSelector((state) => state.isLogin);
-  isLogin = isLogin || localStorage.getItem("userId");
+  const isLogin =
+    useSelector((state) => state.auth?.isLogin) ||
+    Boolean(localStorage.getItem("userId"));
 
   const [checkedList, setCheckedList] = useState([]);
+  const movie = bookItem?.[0];
 
-  const sections = [
-    { name: "SILVER", price: 150, rows: ["A", "B", "C"] },
-    { name: "PREMIUM", price: 200, rows: ["D", "E"] },
-    { name: "RECLINER", price: 300, rows: ["F", "G"] },
-  ];
-
-  const getSeats = (row) =>
-    Array.from({ length: 20 }, (_, index) => row[`seat${index + 1}`]);
+  const total = checkedList.reduce(
+    (sum, seat) => sum + getSeatPrice(seat),
+    0
+  );
 
   const handleSelect = (seat) => {
-    if (checkedList.includes(seat)) {
-      setCheckedList(checkedList.filter((item) => item !== seat));
-    } else {
-      setCheckedList([...checkedList, seat]);
-    }
+    setCheckedList((current) =>
+      current.includes(seat)
+        ? current.filter((item) => item !== seat)
+        : [...current, seat]
+    );
   };
 
-  // Calculate total price from selected seats
-  const total = checkedList.reduce((sum, seat) => {
-    const row = seatData.find((r) => getSeats(r).includes(seat));
-    return sum + (row ? row.price : 0);
-  }, 0);
-
   const confirmBooking = () => {
+    if (!movie) {
+      navigate("/");
+      return;
+    }
+
     if (checkedList.length === 0) {
       alert("Please select at least one seat.");
       return;
     }
 
-    const bookingDetails = {
+    const booking = {
+      ...movie,
       seat: checkedList,
-      total: total,
+      total: Number(total),
     };
 
-    const final = {
-      ...bookItem,
-      ...bookingDetails,
-    };
-
-    dispatch(add(final));
-
-    if (isLogin) {
-      navigate("/payment");
-    } else {
-      navigate("/login");
-    }
+    dispatch(add(booking));
+    navigate(isLogin ? "/payment" : "/login");
   };
 
   return (
@@ -69,12 +70,11 @@ const BookTicket = () => {
       <Container maxWidth="lg">
         <div className="booking-movie-header">
           <Typography variant="h4" className="booking-movie-title">
-            {bookItem?.[0]?.name || "DINO MOVIES"}
+            {movie?.name || "DINO MOVIES"}
           </Typography>
-
-          {bookItem?.[0]?.starring && (
+          {movie?.starring && (
             <Typography className="booking-movie-starring">
-              Starring: {bookItem[0].starring}
+              Starring: {movie.starring}
             </Typography>
           )}
         </div>
@@ -82,9 +82,9 @@ const BookTicket = () => {
         <div className="dino-screen-container">
           <div className="dino-screen-title">SCREEN</div>
           <div className="dino-screen">
-            <div className="screen-inner-glow"></div>
+            <div className="screen-inner-glow" />
           </div>
-          <div className="dino-screen-light"></div>
+          <div className="dino-screen-light" />
           <div className="dino-screen-direction">ALL EYES THIS WAY</div>
         </div>
 
@@ -101,50 +101,41 @@ const BookTicket = () => {
                   key={section.name}
                 >
                   <div className="dino-section-header">
-                    <div className="dino-section-line"></div>
+                    <div className="dino-section-line" />
                     <div className="dino-section-information">
                       <span className="dino-section-name">{section.name}</span>
-                      <span className="dino-section-price">
-                        ₹{section.price}
-                      </span>
+                      <span className="dino-section-price">₹{section.price}</span>
                     </div>
-                    <div className="dino-section-line"></div>
+                    <div className="dino-section-line" />
                   </div>
 
                   <div className="dino-section-rows">
-                    {sectionRows.map((row) => {
-                      const seats = getSeats(row);
-
-                      return (
-                        <div className="dino-seat-row" key={row.id}>
-                          <div className="dino-row-letter">{row.section}</div>
-
-                          <div className="dino-seat-group">
-                            {seats.map((seat, index) => {
-                              const selected = checkedList.includes(seat);
-
-                              return (
-                                <button
-                                  key={seat}
-                                  type="button"
-                                  title={`${seat} • ₹${row.price}`}
-                                  onClick={() => handleSelect(seat)}
-                                  className={
-                                    selected
-                                      ? "dino-seat dino-seat-selected"
-                                      : "dino-seat"
-                                  }
-                                >
-                                  {index + 1}
-                                </button>
-                              );
-                            })}
-                          </div>
-
-                          <div className="dino-row-letter">{row.section}</div>
+                    {sectionRows.map((row) => (
+                      <div className="dino-seat-row" key={row.id}>
+                        <div className="dino-row-letter">{row.section}</div>
+                        <div className="dino-seat-group">
+                          {getSeats(row).map((seat, index) => {
+                            const selected = checkedList.includes(seat);
+                            return (
+                              <button
+                                key={seat}
+                                type="button"
+                                title={`${seat} • ₹${Number(row.price)}`}
+                                onClick={() => handleSelect(seat)}
+                                className={
+                                  selected
+                                    ? "dino-seat dino-seat-selected"
+                                    : "dino-seat"
+                                }
+                              >
+                                {index + 1}
+                              </button>
+                            );
+                          })}
                         </div>
-                      );
-                    })}
+                        <div className="dino-row-letter">{row.section}</div>
+                      </div>
+                    ))}
                   </div>
                 </div>
               );
@@ -154,17 +145,15 @@ const BookTicket = () => {
 
         <div className="dino-seat-legend">
           <div className="legend-item">
-            <span className="dino-legend-seat legend-available"></span>
+            <span className="dino-legend-seat legend-available" />
             <span>Available</span>
           </div>
-
           <div className="legend-item">
-            <span className="dino-legend-seat legend-selected"></span>
+            <span className="dino-legend-seat legend-selected" />
             <span>Selected</span>
           </div>
-
           <div className="legend-item">
-            <span className="dino-legend-seat legend-booked"></span>
+            <span className="dino-legend-seat legend-booked" />
             <span>Booked</span>
           </div>
         </div>
@@ -178,21 +167,15 @@ const BookTicket = () => {
                 : "No seats selected"}
             </div>
           </div>
-
           <div className="dino-ticket-count">
             <small>TICKETS</small>
             <strong>{checkedList.length}</strong>
           </div>
-
           <div className="dino-total-price">
             <small>TOTAL</small>
             <strong>₹{total}</strong>
           </div>
-
-          <button
-            className="dino-continue-button"
-            onClick={confirmBooking}
-          >
+          <button className="dino-continue-button" onClick={confirmBooking}>
             CONTINUE
           </button>
         </div>

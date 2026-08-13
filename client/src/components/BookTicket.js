@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { seatData } from "../Seat";
 
 import {
@@ -30,11 +30,6 @@ const BookTicket = () => {
 
     // Selected seats
     const [checkedList, setCheckedList] = useState([]);
-
-    // Total amount
-    const [total, setTotal] = useState(0);
-
-
     /* ============================================
        CINEMA SECTIONS
     ============================================ */
@@ -109,35 +104,6 @@ const BookTicket = () => {
 
     /* ============================================
        CALCULATE TOTAL
-    ============================================ */
-
-    const totalAmount = () => {
-
-        let amount = 0;
-
-        for (let selectedSeat of checkedList) {
-
-            for (let row of seatData) {
-
-                if (
-                    Object.values(row).includes(
-                        selectedSeat
-                    )
-                ) {
-
-                    amount += Number(row.price);
-
-                }
-
-            }
-
-        }
-
-        return amount;
-
-    };
-    /* ============================================
-       CONFIRM BOOKING
     ============================================ */
 
     const confirmBooking = () => {

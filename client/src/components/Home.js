@@ -1,30 +1,20 @@
-import { Container, Grid } from "@mui/material";
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import { Box } from "@mui/material";
 import Button from '@mui/material/Button';
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 import { add } from '../redux/bookSlice';
 // import { MovieContext } from "../context/BookingContext";
 
 import Typography from '@mui/material/Typography';
 import { Movies } from '../Movie';
 import { useNavigate } from "react-router-dom"
-import { useContext, useEffect } from "react";
-
 const Home = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     // const { movieData, setMovieData } = us eContext(MovieContext);
-
-    const handleData = (movie) => {
-        console.log("ewret")
-        console.log(movie)
-        // setMovieData(movie)
-        navigate('/book-ticket')
-    }
 
     const bookTicket = (item) => {
 

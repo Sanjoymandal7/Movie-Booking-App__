@@ -1,0 +1,2319 @@
+@import url('https://fonts.googleapis.com/css2?family=Chivo:wght@500&family=DM+Serif+Display&family=Domine:wght@600&family=Merriweather:ital,wght@1,700&family=Open+Sans:ital,wght@1,800&family=Oswald:wght@300&family=Poppins&family=Roboto+Slab:wght@200&family=Work+Sans:wght@500&display=swap');
+
+* {
+  font-family: 'Roboto Slab', serif;
+  
+}
+
+body {
+  margin: 0;
+  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif; */
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: black;
+  /* background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%); */
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+
+.navbar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 50px;
+  /* background-color: #f60a0a; */
+  color: white;
+  position: relative; /* Add relative positioning */
+  background-image: linear-gradient(to right top, #f21026, #f6003b, #f9004d, #f90060, #f81271);
+}
+
+.logo {
+  font-size: 20px;
+}
+
+/* Desktop navigation links */
+.nav-links {
+  display: flex;
+  justify-content: flex-end;
+  list-style-type: none;
+  width: 75%;
+}
+
+/* Common navigation link styles */
+.home,
+.skill,
+.contact,
+.about {
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+  padding: 10px 20px;
+  margin: 0 10px;
+  cursor: pointer;
+  /* font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif */
+}
+
+/* Mobile menu icon */
+.mobile-menu-icon {
+  display: none;
+}
+
+/* Media query for mobile layout */
+@media screen and (max-width: 780px) {
+  .logo {
+      position: absolute;
+      /* top: 40%; */
+      left: 10%;
+      /* transform: translate(-50%, -50%); */
+  }
+
+  .nav-links {
+      display: none;
+  }
+
+  /* Adjusted styles for mobile navigation */
+  .nav-links-mobile {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background-image: linear-gradient(to right top, #f21026, #f6003b, #f9004d, #f90060, #f81271);
+      /* opacity: 0.80; */
+      list-style: none;
+      text-align: center;
+      /* padding: 10px 0; */
+      transition: all 1.5s ease-out;
+      z-index: 1;
+  }
+  /* Adjusted styles for mobile navigation links */
+  .home,
+  .skill,
+  .about,
+  .contact {
+      color: #fff;
+      text-align: center;
+      padding: 10px 0;
+      display: block;
+  }
+  .home:hover,
+  .skill:hover,
+  .contact:hover,
+  .about:hover {
+  color: #fff;
+  font-size: 25px; /* Increase font size on hover */
+}
+
+  /* Mobile menu icon styles */
+  .mobile-menu-icon {
+      display: block;
+      position: absolute;
+      font-size: 30px;
+      color: white;
+      background: transparent;
+      border: none;
+      outline: none;
+      top: 50%;
+      right: 20px;
+      transform: translateY(-50%);
+  }
+}
+
+.card-content{
+  background-image: linear-gradient(to right top, #14080d, #12080b, #100709, #0d0708, #0a0707);
+}
+
+.table-class{
+  background-image: linear-gradient(to right top, #93c0d3, #8eb8db, #95aedf, #a7a1dd, #bf92d0);
+  border-radius: 5px;
+}
+
+.white-color{
+  color:white
+}
+/* ==========================================================
+   DINO MOVIES
+   PROFESSIONAL CINEMA SEAT BOOKING
+========================================================== */
+
+
+.dino-booking-page {
+
+    min-height: 100vh;
+
+    padding:
+        30px 0 70px;
+
+    color: #ffffff;
+
+    background:
+
+        radial-gradient(
+            circle at top,
+            #191922 0%,
+            #0c0c11 38%,
+            #050507 70%,
+            #000000 100%
+        );
+
+}
+
+
+/* ==========================================================
+   MOVIE INFORMATION
+========================================================== */
+
+
+.booking-movie-header {
+
+    text-align: center;
+
+    margin-bottom: 25px;
+
+}
+
+
+.booking-movie-title {
+
+    color: #ffffff;
+
+    font-weight:
+        700 !important;
+
+    letter-spacing:
+        1px !important;
+
+}
+
+
+.booking-movie-starring {
+
+    margin-top:
+        7px !important;
+
+    color:
+        #777782;
+
+    font-size:
+        13px !important;
+
+}
+
+
+
+/* ==========================================================
+   CINEMA SCREEN
+========================================================== */
+
+
+.dino-screen-container {
+
+    position: relative;
+
+    max-width: 950px;
+
+    height: 190px;
+
+    margin:
+        30px auto 20px;
+
+    display: flex;
+
+    flex-direction:
+        column;
+
+    align-items:
+        center;
+
+    perspective:
+        900px;
+
+}
+
+
+.dino-screen-title {
+
+    margin-bottom:
+        9px;
+
+    color:
+        #777780;
+
+    font-size:
+        9px;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        7px;
+
+}
+
+
+/* MAIN SCREEN */
+
+.dino-screen {
+
+    position: relative;
+
+    width: 78%;
+
+    height: 62px;
+
+    overflow: hidden;
+
+
+    background:
+
+        linear-gradient(
+
+            180deg,
+
+            #ffffff 0%,
+
+            #f1f3f5 35%,
+
+            #cdd4dc 70%,
+
+            #aeb8c3 100%
+
+        );
+
+
+    border-radius:
+
+        50% 50% 10px 10px /
+
+        100% 100% 18px 18px;
+
+
+    transform:
+
+        perspective(650px)
+
+        rotateX(-11deg);
+
+
+    box-shadow:
+
+        0 0 8px
+        rgba(255,255,255,.7),
+
+        0 7px 25px
+        rgba(255,255,255,.20),
+
+        0 25px 60px
+        rgba(255,255,255,.08);
+
+}
+
+
+/* LIGHT INSIDE SCREEN */
+
+.screen-inner-glow {
+
+    position: absolute;
+
+    width:
+        60%;
+
+    height:
+        100%;
+
+    left:
+        20%;
+
+    top:
+        0;
+
+    background:
+
+        radial-gradient(
+
+            ellipse,
+
+            rgba(255,255,255,.9),
+
+            transparent 70%
+
+        );
+
+}
+
+
+/* BOTTOM SCREEN CURVE */
+
+.dino-screen::after {
+
+    content: "";
+
+    position: absolute;
+
+    left:
+        5%;
+
+    right:
+        5%;
+
+    bottom:
+        -1px;
+
+    height:
+        5px;
+
+
+    background:
+
+        linear-gradient(
+
+            90deg,
+
+            transparent,
+
+            rgba(255,255,255,.95),
+
+            transparent
+
+        );
+
+
+    border-radius:
+        50%;
+
+}
+
+
+/* SCREEN LIGHT TOWARDS SEATS */
+
+.dino-screen-light {
+
+    position: absolute;
+
+    top:
+        55px;
+
+    width:
+        68%;
+
+    height:
+        105px;
+
+
+    background:
+
+        linear-gradient(
+
+            to bottom,
+
+            rgba(255,255,255,.10),
+
+            rgba(255,255,255,.025),
+
+            transparent
+
+        );
+
+
+    clip-path:
+
+        polygon(
+
+            8% 0,
+
+            92% 0,
+
+            100% 100%,
+
+            0 100%
+
+        );
+
+
+    filter:
+        blur(12px);
+
+    pointer-events:
+        none;
+
+}
+
+
+.dino-screen-direction {
+
+    position: relative;
+
+    margin-top:
+        19px;
+
+    color:
+        #565660;
+
+    font-size:
+        9px;
+
+    font-weight:
+        600;
+
+    letter-spacing:
+        4px;
+
+}
+
+
+
+/* ==========================================================
+   SEATING WRAPPER
+========================================================== */
+
+
+.dino-seat-scroll {
+
+    width:
+        100%;
+
+    overflow-x:
+        auto;
+
+    padding-bottom:
+        10px;
+
+}
+
+
+.dino-theatre-seating {
+
+    width:
+        max-content;
+
+    min-width:
+        900px;
+
+    margin:
+        0 auto;
+
+    padding:
+        5px 35px 20px;
+
+}
+
+
+
+/* ==========================================================
+   SECTIONS
+========================================================== */
+
+
+.dino-ticket-section {
+
+    margin-bottom:
+        45px;
+
+}
+
+
+.dino-section-header {
+
+    width:
+        82%;
+
+    margin:
+        0 auto 22px;
+
+    display:
+        flex;
+
+    justify-content:
+        center;
+
+    align-items:
+        center;
+
+    gap:
+        18px;
+
+}
+
+
+.dino-section-line {
+
+    width:
+        110px;
+
+    height:
+        1px;
+
+
+    background:
+
+        linear-gradient(
+
+            90deg,
+
+            transparent,
+
+            #35353d,
+
+            transparent
+
+        );
+
+}
+
+
+.dino-section-information {
+
+    display:
+        flex;
+
+    justify-content:
+        center;
+
+    align-items:
+        center;
+
+    gap:
+        12px;
+
+}
+
+
+.dino-section-name {
+
+    color:
+        #8f8f99;
+
+    font-size:
+        10px;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        4px;
+
+}
+
+
+.dino-section-price {
+
+    padding:
+        3px 9px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.08);
+
+    border-radius:
+        20px;
+
+
+    background:
+        rgba(255,255,255,.04);
+
+
+    color:
+        #b7b7c0;
+
+    font-size:
+        10px;
+
+    font-weight:
+        700;
+
+}
+
+
+
+/* ==========================================================
+   SECTION COLORS
+========================================================== */
+
+
+/* SILVER */
+
+.silver .dino-section-name {
+
+    color:
+        #b7bdc6;
+
+}
+
+.silver .dino-section-price {
+
+    color:
+        #cbd0d7;
+
+}
+
+
+/* PREMIUM */
+
+.premium .dino-section-name {
+
+    color:
+        #e1b956;
+
+}
+
+.premium .dino-section-price {
+
+    color:
+        #e1b956;
+
+    border-color:
+        rgba(225,185,86,.15);
+
+    background:
+        rgba(225,185,86,.06);
+
+}
+
+
+/* RECLINER */
+
+.recliner .dino-section-name {
+
+    color:
+        #ae9bea;
+
+}
+
+.recliner .dino-section-price {
+
+    color:
+        #ae9bea;
+
+    border-color:
+        rgba(174,155,234,.15);
+
+    background:
+        rgba(174,155,234,.06);
+
+}
+
+
+
+/* ==========================================================
+   ROW
+========================================================== */
+
+
+.dino-section-rows {
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    gap:
+        3px;
+
+}
+
+
+.dino-seat-row {
+
+    display:
+        flex;
+
+    justify-content:
+        center;
+
+    align-items:
+        center;
+
+    gap:
+        15px;
+
+    margin-bottom:
+        11px;
+
+}
+
+
+.dino-row-letter {
+
+    width:
+        24px;
+
+    text-align:
+        center;
+
+    color:
+        #62626c;
+
+    font-size:
+        11px;
+
+    font-weight:
+        700;
+
+}
+
+
+
+/* ==========================================================
+   SEAT GRID
+
+   Layout:
+
+   1 2 3 4
+       aisle
+   5 - 16
+       aisle
+   17 18 19 20
+========================================================== */
+
+
+.dino-seat-group {
+
+    display:
+        grid;
+
+
+    grid-template-columns:
+
+        repeat(4, 31px)
+
+        26px
+
+        repeat(12, 31px)
+
+        26px
+
+        repeat(4, 31px);
+
+
+    gap:
+        6px;
+
+
+    align-items:
+        center;
+
+}
+
+
+/* Seat 5 starts after aisle */
+
+.dino-seat-group
+.dino-seat:nth-child(5) {
+
+    grid-column:
+        6;
+
+}
+
+
+/* Seat 17 starts after second aisle */
+
+.dino-seat-group
+.dino-seat:nth-child(17) {
+
+    grid-column:
+        19;
+
+}
+
+
+
+/* ==========================================================
+   SEAT
+========================================================== */
+
+
+.dino-seat {
+
+    position:
+        relative;
+
+
+    width:
+        31px;
+
+    height:
+        27px;
+
+
+    padding:
+        0;
+
+
+    border:
+        1.5px solid
+        #42c783;
+
+
+    border-radius:
+        5px 5px 8px 8px;
+
+
+    outline:
+        none;
+
+
+    background:
+        rgba(66,199,131,.025);
+
+
+    color:
+        #5ed797;
+
+
+    font-family:
+        Arial, sans-serif;
+
+
+    font-size:
+        9px;
+
+
+    font-weight:
+        600;
+
+
+    cursor:
+        pointer;
+
+
+    transition:
+
+        transform .18s ease,
+
+        background .18s ease,
+
+        color .18s ease,
+
+        border .18s ease,
+
+        box-shadow .18s ease;
+
+}
+
+
+/* small seat base */
+
+.dino-seat::after {
+
+    content: "";
+
+    position:
+        absolute;
+
+
+    left:
+        4px;
+
+    right:
+        4px;
+
+    bottom:
+        -4px;
+
+
+    height:
+        3px;
+
+
+    border-radius:
+        0 0 4px 4px;
+
+
+    background:
+        currentColor;
+
+
+    opacity:
+        .45;
+
+}
+
+
+.dino-seat:hover {
+
+    transform:
+
+        translateY(-3px)
+
+        scale(1.07);
+
+
+    background:
+        #42c783;
+
+
+    border-color:
+        #42c783;
+
+
+    color:
+        #07140d;
+
+
+    box-shadow:
+
+        0 5px 14px
+
+        rgba(66,199,131,.22);
+
+}
+
+
+
+/* ==========================================================
+   SILVER SEATS
+========================================================== */
+
+
+.silver .dino-seat {
+
+    border-color:
+        #7c8997;
+
+    color:
+        #9aa5b1;
+
+}
+
+
+.silver .dino-seat:hover {
+
+    background:
+        #9aa5b1;
+
+    border-color:
+        #9aa5b1;
+
+    color:
+        #101114;
+
+}
+
+
+
+/* ==========================================================
+   PREMIUM SEATS
+========================================================== */
+
+
+.premium .dino-seat {
+
+    border-color:
+        #cba34b;
+
+    color:
+        #d7b35d;
+
+    background:
+        rgba(203,163,75,.025);
+
+}
+
+
+.premium .dino-seat:hover {
+
+    background:
+        #d2aa50;
+
+    border-color:
+        #d2aa50;
+
+    color:
+        #171207;
+
+
+    box-shadow:
+
+        0 5px 15px
+
+        rgba(210,170,80,.22);
+
+}
+
+
+
+/* ==========================================================
+   RECLINER SEATS
+========================================================== */
+
+
+.recliner .dino-seat {
+
+    width:
+        32px;
+
+
+    border-color:
+        #8d78d8;
+
+
+    color:
+        #aa98e9;
+
+
+    background:
+        rgba(141,120,216,.035);
+
+}
+
+
+.recliner .dino-seat:hover {
+
+    background:
+        #8d78d8;
+
+    border-color:
+        #8d78d8;
+
+    color:
+        #ffffff;
+
+
+    box-shadow:
+
+        0 5px 15px
+
+        rgba(141,120,216,.25);
+
+}
+
+
+
+/* ==========================================================
+   SELECTED SEAT
+========================================================== */
+
+
+.dino-seat-selected,
+
+.silver .dino-seat-selected,
+
+.premium .dino-seat-selected,
+
+.recliner .dino-seat-selected {
+
+    background:
+        #f4c542 !important;
+
+
+    border-color:
+        #f4c542 !important;
+
+
+    color:
+        #121212 !important;
+
+
+    transform:
+        translateY(-2px);
+
+
+    box-shadow:
+
+        0 0 5px
+        rgba(244,197,66,.7),
+
+        0 5px 15px
+        rgba(244,197,66,.25);
+
+}
+
+
+
+/* ==========================================================
+   LEGEND
+========================================================== */
+
+
+.dino-seat-legend {
+
+    margin:
+        10px auto 35px;
+
+
+    display:
+        flex;
+
+
+    justify-content:
+        center;
+
+
+    align-items:
+        center;
+
+
+    gap:
+        35px;
+
+
+    color:
+        #888892;
+
+
+    font-size:
+        11px;
+
+}
+
+
+.legend-item {
+
+    display:
+        flex;
+
+
+    align-items:
+        center;
+
+
+    gap:
+        8px;
+
+}
+
+
+.dino-legend-seat {
+
+    width:
+        17px;
+
+
+    height:
+        15px;
+
+
+    display:
+        inline-block;
+
+
+    border-radius:
+        3px 3px 5px 5px;
+
+}
+
+
+.legend-available {
+
+    border:
+        1.5px solid
+        #42c783;
+
+}
+
+
+.legend-selected {
+
+    background:
+        #f4c542;
+
+
+    border:
+        1.5px solid
+        #f4c542;
+
+}
+
+
+.legend-booked {
+
+    background:
+        #44444c;
+
+
+    border:
+        1.5px solid
+        #44444c;
+
+}
+
+
+
+/* ==========================================================
+   BOOKING SUMMARY
+========================================================== */
+
+
+.dino-booking-summary {
+
+    position:
+        sticky;
+
+
+    bottom:
+        20px;
+
+
+    max-width:
+        850px;
+
+
+    margin:
+        30px auto 0;
+
+
+    padding:
+        15px 20px;
+
+
+    display:
+        grid;
+
+
+    grid-template-columns:
+
+        1fr
+
+        auto
+
+        auto
+
+        auto;
+
+
+    align-items:
+        center;
+
+
+    gap:
+        28px;
+
+
+    background:
+        rgba(18,18,23,.94);
+
+
+    border:
+        1px solid
+        rgba(255,255,255,.08);
+
+
+    border-radius:
+        13px;
+
+
+    backdrop-filter:
+        blur(18px);
+
+
+    box-shadow:
+
+        0 15px 50px
+
+        rgba(0,0,0,.55);
+
+
+    z-index:
+        20;
+
+}
+
+
+
+/* SELECTED */
+
+.dino-selected-information {
+
+    min-width:
+        0;
+
+}
+
+
+.selected-label {
+
+    display:
+        block;
+
+
+    color:
+        #62626d;
+
+
+    font-size:
+        8px;
+
+
+    font-weight:
+        700;
+
+
+    letter-spacing:
+        1.5px;
+
+}
+
+
+.selected-seat-names {
+
+    margin-top:
+        5px;
+
+
+    color:
+        #e7e7eb;
+
+
+    font-size:
+        12px;
+
+
+    white-space:
+        nowrap;
+
+
+    overflow:
+        hidden;
+
+
+    text-overflow:
+        ellipsis;
+
+}
+
+
+
+/* TICKET COUNT */
+
+.dino-ticket-count {
+
+    display:
+        flex;
+
+
+    flex-direction:
+        column;
+
+
+    text-align:
+        center;
+
+}
+
+
+.dino-ticket-count small {
+
+    color:
+        #62626d;
+
+
+    font-size:
+        8px;
+
+
+    letter-spacing:
+        1px;
+
+}
+
+
+.dino-ticket-count strong {
+
+    margin-top:
+        3px;
+
+
+    color:
+        #ffffff;
+
+
+    font-size:
+        18px;
+
+}
+
+
+
+/* TOTAL */
+
+.dino-total-price {
+
+    display:
+        flex;
+
+
+    flex-direction:
+        column;
+
+
+    text-align:
+        right;
+
+}
+
+
+.dino-total-price small {
+
+    color:
+        #62626d;
+
+
+    font-size:
+        8px;
+
+
+    letter-spacing:
+        1px;
+
+}
+
+
+.dino-total-price strong {
+
+    margin-top:
+        2px;
+
+
+    color:
+        #f4c542;
+
+
+    font-size:
+        23px;
+
+}
+
+
+
+/* ==========================================================
+   CONTINUE BUTTON
+========================================================== */
+
+
+.dino-continue-button {
+
+    padding:
+        11px 27px;
+
+
+    border:
+        none;
+
+
+    border-radius:
+        7px;
+
+
+    background:
+
+        linear-gradient(
+
+            135deg,
+
+            #f5cf58,
+
+            #e9a92c
+
+        );
+
+
+    color:
+        #111111;
+
+
+    font-size:
+        10px;
+
+
+    font-weight:
+        900;
+
+
+    letter-spacing:
+        1.2px;
+
+
+    cursor:
+        pointer;
+
+
+    transition:
+        .2s ease;
+
+}
+
+
+.dino-continue-button:hover {
+
+    transform:
+        translateY(-2px);
+
+
+    box-shadow:
+
+        0 8px 22px
+
+        rgba(244,197,66,.25);
+
+}
+
+
+
+/* ==========================================================
+   MOBILE
+========================================================== */
+
+
+@media screen and (max-width: 900px) {
+
+
+    .dino-booking-page {
+
+        padding-top:
+            20px;
+
+    }
+
+
+    .booking-movie-title {
+
+        font-size:
+            23px !important;
+
+    }
+
+
+    .dino-screen-container {
+
+        height:
+            155px;
+
+    }
+
+
+    .dino-screen {
+
+        width:
+            88%;
+
+        height:
+            52px;
+
+    }
+
+
+    .dino-theatre-seating {
+
+        min-width:
+            880px;
+
+        padding-left:
+            10px;
+
+        padding-right:
+            10px;
+
+    }
+
+
+    .dino-booking-summary {
+
+        position:
+            relative;
+
+
+        bottom:
+            auto;
+
+
+        margin:
+            25px 10px 0;
+
+
+        grid-template-columns:
+
+            1fr
+
+            auto
+
+            auto;
+
+    }
+
+
+    .dino-continue-button {
+
+        grid-column:
+            1 / -1;
+
+
+        width:
+            100%;
+
+    }
+
+
+    .dino-seat-legend {
+
+        gap:
+            17px;
+
+    }
+
+}
+/* =========================================================
+   DINO MOVIES - PROFESSIONAL PAYMENT PAGE
+========================================================= */
+
+.dino-payment-page {
+
+    min-height: 100vh;
+
+    padding:
+        55px 20px 80px;
+
+    background:
+        radial-gradient(
+            circle at top,
+            #1a1a22 0%,
+            #0b0b10 45%,
+            #030304 100%
+        );
+
+    color: white;
+
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.payment-page-heading {
+
+    text-align: center;
+
+    margin-bottom: 35px;
+
+}
+
+
+.payment-small-title {
+
+    color: #e7b94d;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 5px;
+
+}
+
+
+.payment-page-heading h1 {
+
+    margin:
+        10px 0 5px;
+
+    font-size: 30px;
+
+    font-weight: 700;
+
+    letter-spacing: .5px;
+
+}
+
+
+.payment-page-heading p {
+
+    margin: 0;
+
+    color: #72727c;
+
+    font-size: 12px;
+
+}
+
+
+
+/* =========================================================
+   MAIN CARD
+========================================================= */
+
+.dino-checkout-card {
+
+    max-width: 900px;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns:
+        320px 1fr;
+
+
+    overflow: hidden;
+
+
+    background:
+        rgba(18,18,23,.95);
+
+
+    border:
+        1px solid
+        rgba(255,255,255,.07);
+
+
+    border-radius: 18px;
+
+
+    box-shadow:
+        0 30px 80px
+        rgba(0,0,0,.55);
+
+}
+
+
+
+/* =========================================================
+   POSTER
+========================================================= */
+
+.checkout-poster-section {
+
+    position: relative;
+
+    min-height: 520px;
+
+    overflow: hidden;
+
+    background: #08080b;
+
+}
+
+
+.checkout-movie-poster {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+}
+
+
+/* Dark poster overlay */
+
+.poster-overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            to right,
+            transparent 55%,
+            rgba(18,18,23,.65) 85%,
+            #121217 100%
+        );
+
+    pointer-events: none;
+
+}
+
+
+
+/* =========================================================
+   INFORMATION
+========================================================= */
+
+.checkout-information {
+
+    padding:
+        38px 40px;
+
+}
+
+
+.checkout-label {
+
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #62626d;
+
+    font-size: 8px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+}
+
+
+.checkout-movie-header h2 {
+
+    margin:
+        0 0 6px;
+
+    color: #ffffff;
+
+    font-size: 27px;
+
+    font-weight: 700;
+
+}
+
+
+.checkout-movie-header p {
+
+    margin: 0;
+
+    color: #777782;
+
+    font-size: 11px;
+
+}
+
+
+
+/* =========================================================
+   DIVIDER
+========================================================= */
+
+.checkout-divider {
+
+    width: 100%;
+
+    height: 1px;
+
+    margin:
+        25px 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.08),
+            rgba(255,255,255,.03),
+            transparent
+        );
+
+}
+
+
+
+/* =========================================================
+   SEATS
+========================================================= */
+
+.checkout-row {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-start;
+
+    gap: 20px;
+
+}
+
+
+.checkout-seat-list {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 7px;
+
+}
+
+
+.checkout-seat {
+
+    min-width: 31px;
+
+    padding:
+        6px 8px;
+
+    text-align: center;
+
+    border:
+        1px solid
+        rgba(231,185,77,.30);
+
+    border-radius: 6px;
+
+    background:
+        rgba(231,185,77,.07);
+
+    color:
+        #e7b94d;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+}
+
+
+.checkout-ticket-count {
+
+    text-align: right;
+
+}
+
+
+.checkout-ticket-count strong {
+
+    display: block;
+
+    color: white;
+
+    font-size: 22px;
+
+}
+
+
+
+/* =========================================================
+   PRICE BREAKDOWN
+========================================================= */
+
+.price-breakdown {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 15px;
+
+}
+
+
+.price-row {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+}
+
+
+.price-row span {
+
+    color: #8b8b95;
+
+    font-size: 12px;
+
+}
+
+
+.price-row strong {
+
+    color: #e0e0e5;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+}
+
+
+
+/* =========================================================
+   TOTAL
+========================================================= */
+
+.checkout-total {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+}
+
+
+.checkout-total > div {
+
+    display: flex;
+
+    flex-direction: column;
+
+}
+
+
+.checkout-total span {
+
+    color: #a4a4ad;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+
+}
+
+
+.checkout-total small {
+
+    margin-top: 4px;
+
+    color: #555560;
+
+    font-size: 9px;
+
+}
+
+
+.checkout-total > strong {
+
+    color: #f1c453;
+
+    font-size: 30px;
+
+    font-weight: 700;
+
+}
+
+
+
+/* =========================================================
+   CONFIRM BUTTON
+========================================================= */
+
+.confirm-booking-button {
+
+    width: 100%;
+
+    margin-top: 30px;
+
+    padding:
+        14px 20px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f3ce59,
+            #e8a72b
+        );
+
+    color: #111;
+
+    font-size: 11px;
+
+    font-weight: 900;
+
+    letter-spacing: 1px;
+
+    cursor: pointer;
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+
+}
+
+
+.confirm-booking-button:hover {
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 10px 30px
+        rgba(231,185,77,.22);
+
+}
+
+
+.confirm-booking-button:disabled {
+
+    opacity: .6;
+
+    cursor: not-allowed;
+
+    transform: none;
+
+}
+
+
+
+/* =========================================================
+   SECURE TEXT
+========================================================= */
+
+.secure-booking-text {
+
+    margin-top: 14px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 6px;
+
+    color: #5f5f69;
+
+    font-size: 9px;
+
+}
+
+
+.secure-booking-text span {
+
+    color: #54c98c;
+
+}
+
+
+
+/* =========================================================
+   EMPTY BOOKING
+========================================================= */
+
+.payment-empty {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    background: #07070a;
+
+    color: white;
+
+}
+
+
+.payment-empty p {
+
+    color: #777;
+
+}
+
+
+.payment-empty button {
+
+    margin-top: 15px;
+
+    padding:
+        11px 25px;
+
+    border: none;
+
+    border-radius: 7px;
+
+    background: #e7b94d;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+}
+
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media screen and (max-width: 750px) {
+
+    .dino-payment-page {
+
+        padding:
+            30px 15px 60px;
+
+    }
+
+
+    .payment-page-heading h1 {
+
+        font-size: 25px;
+
+    }
+
+
+    .dino-checkout-card {
+
+        max-width: 450px;
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .checkout-poster-section {
+
+        min-height: 0;
+
+        height: 350px;
+
+    }
+
+
+    .checkout-movie-poster {
+
+        object-position:
+            center 25%;
+
+    }
+
+
+    .poster-overlay {
+
+        background:
+            linear-gradient(
+                to bottom,
+                transparent 55%,
+                #121217 100%
+            );
+
+    }
+
+
+    .checkout-information {
+
+        padding:
+            28px 22px;
+
+    }
+
+
+    .checkout-movie-header h2 {
+
+        font-size: 23px;
+
+    }
+
+
+    .checkout-total > strong {
+
+        font-size: 26px;
+
+    }
+
+}

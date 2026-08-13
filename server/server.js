@@ -13,7 +13,7 @@ connectDB();
 const app = express()
 
 app.use(cors({
-    origin: process.env.CLIENT_URL,
+    origin: "https://dino-movies.vercel.app",
     credentials: true
 }));
 app.use(express.json())

@@ -136,15 +136,6 @@ const BookTicket = () => {
         return amount;
 
     };
-
-
-    useEffect(() => {
-
-        setTotal(totalAmount());
-
-    }, [checkedList]);
-
-
     /* ============================================
        CONFIRM BOOKING
     ============================================ */

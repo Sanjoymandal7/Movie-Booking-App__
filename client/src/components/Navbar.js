@@ -12,9 +12,6 @@ const Navbar = () => {
     isLogin = isLogin || localStorage.getItem("userId");
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    //state
-    const [value, setValue] = useState();
-
     //logout
     const handleLogout = () => {
         try {
